@@ -1,18 +1,16 @@
 const baseURL = 'https://api.themoviedb.org/3';
 const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
+const movies =  '/discover/movie';
+const genres = '/genre/movie/list';
+const moviesByGenre =  `${movies}?with_genres=`;
+const moviesBySearch = 'search/movie?query=';
 
-const urls = {
-    movies: {
-        base: 'discover/movie',
-        popular: '/movie/popular',
-        topRated: '/movie/top_rated',
-        details: (id: number): string => `discover/movie/${id}`,
-        search: '/search/movie',
-    }
-};
 
 export {
     baseURL,
-    urls,
-    imageBaseURL
+    imageBaseURL,
+    movies,
+    genres,
+    moviesByGenre,
+    moviesBySearch
 };

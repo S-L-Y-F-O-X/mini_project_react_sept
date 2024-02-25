@@ -1,13 +1,11 @@
 import {FC, PropsWithChildren, useEffect, useState} from "react";
-import {IMovie} from "../../interfaces";
-import {apiService} from "../../services";
-import {Movie} from "./Movie";
-import {urls} from "../../constants";
 
+import {IMovie} from "../../../interfaces";
+import {movieService} from "../../../services";
 import css from './Movies.module.css'
+import {Movie} from "../Movie";
 
 interface IProps extends PropsWithChildren {
-
 }
 
 const Movies: FC<IProps> = () => {
@@ -15,15 +13,19 @@ const Movies: FC<IProps> = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-                const response = await apiService.get(urls.movies.base, {
-                });
-                setMovies(response.data.results);
+                const moviesData = await movieService.fetchMovies();
+                setMovies(moviesData);
         };
         fetchData();
     }, []);
+
     return (
+        <div>
+            <div>Left bar</div>
         <div className={css.Movies}>
             {movies.map((movie: IMovie) =><Movie key={movie.id} movie={movie} />)}
+        </div>
+            <div>Right bar</div>
         </div>
     );
 };

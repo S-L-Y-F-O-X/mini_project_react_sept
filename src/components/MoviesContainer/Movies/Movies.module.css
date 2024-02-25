@@ -1,0 +1,8 @@
+.Movies {
+    margin-left: 200px;
+    margin-right: 200px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

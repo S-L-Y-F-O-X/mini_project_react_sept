@@ -1,0 +1,58 @@
+.Movie {
+margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+    width: calc(20% - 10px);
+    background-color: #e1e1e1;
+}
+
+.Movie img{
+    transition: 0.4s ease-in;
+    filter: grayscale(0%);
+}
+.Movie img:hover{
+    filter: grayscale(100%);
+}
+
+.Movie h1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*.Movie {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    text-align: center;*/
+/*    margin-bottom: 20px;*/
+/*    width: calc(20% - 10px);*/
+/*}*/
+
+/*.MovieImage {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 300px;*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*}*/
+
+/*.MovieTitle {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    background-color: rgba(0, 0, 0, 0.7);*/
+/*    color: white;*/
+/*    padding: 8px;*/
+/*    text-align: center;*/
+/*    visibility: hidden;*/
+/*    transition: visibility 0s, opacity 0.5s linear;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*.MovieImage:hover .MovieTitle {*/
+/*    visibility: visible;*/
+/*    opacity: 1;*/
+/*}*/

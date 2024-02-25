@@ -2,12 +2,40 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: aqua;
+    background-color: #430457;
     height: 100px;
 }
 
 .Header a{
     text-decoration: none;
-    color: red;
+    color: #f9ff45;
     font-size: 25px ;
 }
+
+/*.container {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: flex-end;*/
+/*    background-color: #430457;*/
+/*    min-height: 100px;*/
+/*}*/
+
+/*.header {*/
+/*    flex: 1;*/
+/*display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.left, .right {*/
+
+/*    width: 100px;*/
+/*height: 100%;*/
+/*background-color: #f60707;*/
+/*}*/
+
+/*.link {*/
+/*    text-decoration: none;*/
+/*    color: #f9ff45;*/
+/*    font-size: 25px;*/
+/*}*/

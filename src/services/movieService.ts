@@ -1,13 +1,24 @@
-import {IRes} from "../types";
-import {IMovie} from "../interfaces";
 import {apiService} from "./apiService";
-import {urls} from "../constants";
+import {movies, moviesByGenre, moviesBySearch} from "../constants";
+
 
 const movieService = {
-    getAll:():IRes<IMovie[]> => apiService.get(urls.movies.base),
-    getById:(id:number):IRes<IMovie> => apiService.get(urls.movies.details(id))
-}
+    fetchMovies: async () => {
+        const response = await apiService.get(movies, {});
+        return response.data.results;
+    },
+    fetchMoviesByGenre: async (genreId: number, page: number) => {
+        const response = await apiService.get(`${moviesByGenre}${genreId}&page=${page}`, {});
+        return response.data.results;
+    },
+    searchMovies: async (query: string) => {
+        const response = await apiService.get(`${movies}${moviesBySearch}${query}`, {});
+        return response.data.results;
+    }
+};
 
 export {
     movieService
-}
+};
+
+// (`${movies}${moviesByGenre}${genreId}`, {})

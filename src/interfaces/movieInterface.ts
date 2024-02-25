@@ -4,7 +4,14 @@
      poster_path: string;
      release_date: number;
      vote_average: number
+     movie: string
  }
+
+ export interface IGenre {
+    id: number;
+    name: string;
+ }
+
  export interface IMovieResponse {
      results: IMovie[];
  }
