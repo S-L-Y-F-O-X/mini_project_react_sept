@@ -11,7 +11,3 @@
     id: number;
     name: string;
  }
-
- export interface IMovieResponse {
-     results: IMovie[];
- }

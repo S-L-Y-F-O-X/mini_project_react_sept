@@ -1,8 +1,28 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.leftBar{
+    width: 10%;
+}
 .Movies {
-    margin-left: 200px;
-    margin-right: 200px;
+    width: 80%;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     margin-bottom: 10px;
 }
+.rightBar {
+    width: 10%;
+}
+
+.Buttons {
+    text-align: center;
+}
+
+.Buttons a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.Buttons a:hover:not(.active) {background-color: #ddd;}

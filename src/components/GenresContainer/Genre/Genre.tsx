@@ -25,3 +25,25 @@ const Genre: FC<IProps> = ({genre}) => {
 };
 
 export {Genre};
+
+// import React from "react";
+// import { IGenre } from "../../../interfaces";
+//
+// interface IGenresListProps {
+//     genres: IGenre[];
+//     handleGenreSelection: (genre: string) => void;
+// }
+//
+// const Genre: React.FC<IGenresListProps> = ({ genres, handleGenreSelection }) => {
+//     return (
+//         <div>
+//             {genres.map((genre: IGenre) => (
+//                 <div key={genre.id} onClick={() => handleGenreSelection(genre.name)}>
+//                     <h1>{genre.name}</h1>
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };
+//
+// export {Genre};

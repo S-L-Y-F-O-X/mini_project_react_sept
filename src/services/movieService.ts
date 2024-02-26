@@ -3,11 +3,11 @@ import {movies, moviesByGenre, moviesBySearch} from "../constants";
 
 
 const movieService = {
-    fetchMovies: async () => {
-        const response = await apiService.get(movies, {});
+    fetchMovies: async (page: number = 1) => {
+        const response = await apiService.get(movies, {params:{page}});
         return response.data.results;
     },
-    fetchMoviesByGenre: async (genreId: number, page: number) => {
+    fetchMoviesByGenre: async (genreId: number, page: number = 1) => {
         const response = await apiService.get(`${moviesByGenre}${genreId}&page=${page}`, {});
         return response.data.results;
     },

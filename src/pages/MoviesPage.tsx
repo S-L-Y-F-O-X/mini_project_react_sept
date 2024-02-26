@@ -6,6 +6,6 @@ const MoviesPage = () => {
             <Movies/>
         </div>
     );
-};
+}
 
 export {MoviesPage};

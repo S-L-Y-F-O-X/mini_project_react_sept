@@ -1,0 +1,20 @@
+.Pagination {
+    text-align: center;
+}
+
+.Pagination button {
+    border: 1px solid #ccc;
+    border-radius: 45%;
+    width: 35px;
+    /*padding: 0.5rem;*/
+    padding: 0.5%;
+    margin: 0.5rem;
+    background-color: #fff;
+    cursor: pointer;
+
+}
+
+.Pagination button.active {
+    background-color: #3bc515;
+    text-decoration: #430457;
+}

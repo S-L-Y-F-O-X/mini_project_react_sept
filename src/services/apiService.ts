@@ -6,7 +6,7 @@ const API_KEY = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YjdhYmM2MThmZTJmYWYwNjE5NjA0Zj
 
 const apiService = axios.create({ baseURL });
 apiService.interceptors.request.use((request) => {
-    request.headers.Authorization = `Bearer ${API_KEY}`; // Оновлюємо спосіб додавання заголовків для авторизації
+    request.headers.Authorization = `Bearer ${API_KEY}`;
     return request;
 });
 

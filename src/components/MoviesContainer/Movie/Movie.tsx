@@ -15,10 +15,6 @@ const Movie: FC<IProps> = ({movie}) => {
 
     return (
         <div className={css.Movie}>
-            {/*<div className={css.MovieImage}>*/}
-            {/*    <h1 className={css.MovieTitle}>{title}</h1>*/}
-            {/*    <img src={imageURL} alt={title}/>*/}
-            {/*</div>*/}
             <img src={`${imageBaseURL}${poster_path}`} alt={title}/>
             <h1>{title}</h1>
             <h2>{release_date}</h2>
