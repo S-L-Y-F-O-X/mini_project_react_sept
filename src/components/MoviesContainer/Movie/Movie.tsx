@@ -11,7 +11,6 @@ interface IProps extends PropsWithChildren {
 const Movie: FC<IProps> = ({movie}) => {
     const {title, release_date, poster_path, vote_average} = movie;
 
-    const imageURL = `${imageBaseURL}${poster_path}`;
 
     return (
         <div className={css.Movie}>

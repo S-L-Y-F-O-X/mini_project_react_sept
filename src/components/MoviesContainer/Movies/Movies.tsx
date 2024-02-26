@@ -8,8 +8,8 @@ import {Movie} from "../Movie";
 import {Genres} from "../../GenresContainer";
 import {Pagination} from "../../Pagination";
 
-
 interface IProps extends PropsWithChildren {
+
 }
 
 const Movies: FC<IProps> = () => {
