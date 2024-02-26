@@ -1,16 +1,41 @@
-import {FC} from "react";
+import { FC, useState, useEffect } from "react";
 
 import css from './Pagination.module.css'
+import {useNavigate, useParams} from "react-router-dom";
 
 interface PaginationProps {
     currentPage: number;
-    totalPages: number;
     onPageChange: (pageNumber: number) => void;
 }
 
-const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
-    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
+    const [totalPages, setTotalPages] = useState(1);
 
+    const navigate = useNavigate();
+    const { page } = useParams();
+
+    const handlePageClick = (pageNumber: number) => {
+        onPageChange(pageNumber);
+        // navigate(`/movie?page=${pageNumber}`);
+    };
+    useEffect(() => {
+        setTotalPages(currentPage + 10);
+        if (page) {
+            const pageNumber = parseInt(page, 10)|| 1;
+            if (pageNumber !== currentPage) {
+                onPageChange(pageNumber);
+            }
+        }
+    }, [navigate, onPageChange]);
+    useEffect(() => {
+        setTotalPages(currentPage + 10);
+        if (page) {
+            const pageNumber = parseInt(page, 10) || 1; // Додайте роздільник || для заміни значення "1" якщо значення pageNumber є NaN
+            if (pageNumber !== currentPage) {
+                onPageChange(pageNumber);
+            }
+        }
+    }, [page, currentPage, onPageChange, setTotalPages]);
     const handlePrevClick = () => {
         if (currentPage > 1) {
             onPageChange(currentPage - 1);
@@ -21,24 +46,44 @@ const Pagination: FC<PaginationProps> = ({ currentPage, totalPages, onPageChange
         if (currentPage < totalPages) {
             onPageChange(currentPage + 1);
         }
-    };
 
-    const handlePageClick = (pageNumber: number) => {
-        onPageChange(pageNumber);
     };
+    // useEffect(() => {
+    //     setTotalPages(currentPage + 10);
+    //     if (page) {
+    //         const pageNumber = parseInt(page, 10) || 1;
+    //         if (pageNumber !== currentPage) {
+    //             onPageChange(pageNumber);
+    //         }
+    //     }
+    // }, [page, currentPage, onPageChange, setTotalPages]);
+    //
+    // const handlePrevClick = () => {
+    //     if (currentPage > 1) {
+    //         onPageChange(currentPage - 1);
+    //         navigate(`/movie?page=${currentPage - 1}`);
+    //     }
+    // };
+    //
+    // const handleNextClick = () => {
+    //     if (currentPage < totalPages) {
+    //         onPageChange(currentPage + 1);
+    //         navigate(`/movie?page=${currentPage + 1}`);
+    //     }
+    // };
 
     return (
         <div className={css.Pagination}>
             <button onClick={handlePrevClick} disabled={currentPage === 1}>&#10094;</button>
-            {pageNumbers.map((pageNumber) => {
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => {
                 const isActive = pageNumber === currentPage;
-                if (pageNumber === 1 || pageNumber === totalPages || Math.abs(pageNumber - currentPage) <= 2) {
+                if (pageNumber === 1 || pageNumber === totalPages || pageNumber === currentPage || Math.abs(pageNumber - currentPage) <= 2) {
                     return (
-                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} style={{ backgroundColor: isActive ? "#430457" : "" }}>
+                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} style={{ backgroundColor: isActive ? "#430457" : ""}}>
                             {pageNumber}
                         </button>
                     );
-                } else if (pageNumber === 2 && currentPage >= 5 || pageNumber === totalPages - 1 && currentPage <= totalPages - 4) {
+                } else if ((pageNumber === 2 && currentPage >= 5) || (pageNumber === totalPages - 1 && currentPage <= totalPages - 4)) {
                     return <button key={pageNumber}>...</button>;
                 }
                 return null;

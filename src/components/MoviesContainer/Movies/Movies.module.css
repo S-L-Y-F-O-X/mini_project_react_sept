@@ -1,10 +1,17 @@
 .main {
+    position: relative;
+    z-index: 1;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    padding-top: 70px;
+
+
 }
 .leftBar{
     width: 10%;
+    position: fixed;
+
 }
 .Movies {
     width: 80%;
@@ -12,9 +19,14 @@
     flex-flow: row wrap;
     justify-content: space-between;
     margin-bottom: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 .rightBar {
     width: 10%;
+    position: fixed;
+    padding-left: 90%;
+
 }
 
 .Buttons {

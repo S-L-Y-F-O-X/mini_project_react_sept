@@ -2,6 +2,7 @@ import {FC, PropsWithChildren} from "react";
 import {useNavigate} from "react-router-dom";
 
 import {IGenre} from "../../../interfaces";
+import css from './Genre.module.css'
 
 interface IProps extends PropsWithChildren {
     genre: IGenre
@@ -19,7 +20,7 @@ const Genre: FC<IProps> = ({genre}) => {
 
     return (
         <div onClick={toSelectedGenre}>
-            <h1>{name}</h1>
+            <h1 className={css.Genre}>{name}</h1>
         </div>
     );
 };
