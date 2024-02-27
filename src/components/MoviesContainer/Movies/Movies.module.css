@@ -5,9 +5,20 @@
     display: flex;
     justify-content: space-between;
     padding-top: 70px;
-
-
+    background-color: #7a7a7a;
 }
+.dark {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 70px;
+    background-color: #fdfdfd;
+}
+
+
+
 .leftBar{
     width: 10%;
     position: fixed;

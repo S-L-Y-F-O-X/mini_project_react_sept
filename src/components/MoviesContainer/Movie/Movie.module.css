@@ -9,7 +9,7 @@ margin-top: 5px;
 }
 
 .Movie img{
-    /*height: 65%;*/
+    height: 77%;
     transition: 0.4s ease-in;
     filter: grayscale(0%);
 }

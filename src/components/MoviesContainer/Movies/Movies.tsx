@@ -11,7 +11,6 @@ import {GenresOnMainList} from "../../GenresOnMainlistContainer";
 interface IProps extends PropsWithChildren {
 
 }
-
 const Movies: FC<IProps> = () => {
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [page, setPage] = useState(1);
