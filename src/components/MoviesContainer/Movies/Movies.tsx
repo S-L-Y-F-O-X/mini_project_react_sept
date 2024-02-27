@@ -3,9 +3,10 @@ import {IMovie} from "../../../interfaces";
 import {movieService} from "../../../services";
 import css from './Movies.module.css';
 import { Movie } from "../Movie";
-import {Genre, Genres} from "../../GenresContainer";
 import { Pagination } from "../../Pagination";
 import { useParams } from "react-router-dom";
+import {GenresOnMainList} from "../../GenresOnMainlistContainer";
+
 
 interface IProps extends PropsWithChildren {
 
@@ -36,11 +37,11 @@ const Movies: FC<IProps> = () => {
     return (
         <div>
             <div className={css.main}>
-                <div className={css.leftBar}><Genres/></div>
+                <div className={css.leftBar}><GenresOnMainList/></div>
                 <div className={css.Movies}>
                     {movies.map((movie: IMovie) => <Movie key={movie.id} movie={movie} />)}
                 </div>
-                <div className={css.rightBar}>Right bar</div>
+                <div className={css.rightBar}></div>
             </div>
             <Pagination currentPage={page}  onPageChange={handlePageChange}/>
         </div>

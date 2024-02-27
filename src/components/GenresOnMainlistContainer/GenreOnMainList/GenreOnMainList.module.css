@@ -1,0 +1,20 @@
+.Genre{
+    padding-left: 10px;
+
+}
+
+
+.Genre p{
+    margin: 3px;
+    font-size: 18px;
+}
+.Genre span{
+    font-size: 80%;
+}
+.Genre p:hover {
+    background: -webkit-linear-gradient(45deg, #87ff37, #1a7204);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+}

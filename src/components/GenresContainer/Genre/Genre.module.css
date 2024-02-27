@@ -1,3 +1,9 @@
 .Genre {
-    color: #f9ff45;
+    margin: 20px 70px 0 70px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /*margin-bottom: 20px;*/
+    width: 15%;
+    background-color: #abaaaa;
 }

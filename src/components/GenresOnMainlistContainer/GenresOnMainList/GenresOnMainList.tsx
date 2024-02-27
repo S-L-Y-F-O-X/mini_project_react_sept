@@ -1,14 +1,14 @@
 import React, {useState, useEffect, PropsWithChildren, FC} from 'react';
-import {genreService} from "../../../services";
-import {Genre} from "../Genre";
-import {IGenreMov} from "../../../interfaces";
-import css from './Genres.module.css'
 
+import {genreService} from "../../../services";
+import css from './Genres.module.css'
+import {IGenreMov} from "../../../interfaces";
+import {GenreOnMainList} from "../GenreOnMainList";
 
 interface IProps extends PropsWithChildren {
 }
 
-const Genres: FC<IProps> = () => {
+const GenresOnMainList: FC<IProps> = () => {
     const [genres, setGenres] = useState<IGenreMov[]>([]);
 
     useEffect(() => {
@@ -22,13 +22,14 @@ const Genres: FC<IProps> = () => {
 
     return (
         <div className={css.Genres}>
-            {genres.map((genre: IGenreMov) =><Genre key={genre.id} genre={genre}/>)}
+            <h1>Genres</h1>
+            {genres.map((genre: IGenreMov) => <GenreOnMainList key={genre.id} genre={genre}/>)}
         </div>
     );
 };
 
 export {
-    Genres
+    GenresOnMainList
 }
 
 // import React, { useEffect, useState } from "react";

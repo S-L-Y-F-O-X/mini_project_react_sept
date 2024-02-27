@@ -12,20 +12,27 @@ const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre;
     const navigate = useNavigate();
 
-
     const toSelectedGenre = () => {
         navigate(`/genres/${id}`);
     }
 
+        return (
+            <div onClick={toSelectedGenre} className={css.Genre}>
+                <h1>{name}</h1>
+            </div>
 
-    return (
-        <div onClick={toSelectedGenre}>
-            <h1 className={css.Genre}>{name}</h1>
-        </div>
-    );
+        );
+
 };
-
 export {Genre};
+
+
+
+// return ()
+//     <div onClick={toSelectedGenre}>
+//         <h1 className={cssForGenre.Genre}>{name}</h1>
+//     </div>
+
 
 // import React from "react";
 // import { IGenre } from "../../../interfaces";

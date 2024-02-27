@@ -28,13 +28,3 @@
     padding-left: 90%;
 
 }
-
-.Buttons {
-    text-align: center;
-}
-
-.Buttons a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-.Buttons a:hover:not(.active) {background-color: #ddd;}

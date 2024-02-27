@@ -16,7 +16,6 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
 
     const handlePageClick = (pageNumber: number) => {
         onPageChange(pageNumber);
-        // navigate(`/movie?page=${pageNumber}`);
     };
     useEffect(() => {
         setTotalPages(currentPage + 10);
@@ -30,7 +29,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
     useEffect(() => {
         setTotalPages(currentPage + 10);
         if (page) {
-            const pageNumber = parseInt(page, 10) || 1; // Додайте роздільник || для заміни значення "1" якщо значення pageNumber є NaN
+            const pageNumber = parseInt(page, 10) || 1;
             if (pageNumber !== currentPage) {
                 onPageChange(pageNumber);
             }
@@ -48,29 +47,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
         }
 
     };
-    // useEffect(() => {
-    //     setTotalPages(currentPage + 10);
-    //     if (page) {
-    //         const pageNumber = parseInt(page, 10) || 1;
-    //         if (pageNumber !== currentPage) {
-    //             onPageChange(pageNumber);
-    //         }
-    //     }
-    // }, [page, currentPage, onPageChange, setTotalPages]);
-    //
-    // const handlePrevClick = () => {
-    //     if (currentPage > 1) {
-    //         onPageChange(currentPage - 1);
-    //         navigate(`/movie?page=${currentPage - 1}`);
-    //     }
-    // };
-    //
-    // const handleNextClick = () => {
-    //     if (currentPage < totalPages) {
-    //         onPageChange(currentPage + 1);
-    //         navigate(`/movie?page=${currentPage + 1}`);
-    //     }
-    // };
+
 
     return (
         <div className={css.Pagination}>
@@ -79,7 +56,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
                 const isActive = pageNumber === currentPage;
                 if (pageNumber === 1 || pageNumber === totalPages || pageNumber === currentPage || Math.abs(pageNumber - currentPage) <= 2) {
                     return (
-                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} style={{ backgroundColor: isActive ? "#430457" : ""}}>
+                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} style={{ backgroundColor: isActive ? "#1e8300" : "", color: isActive ? "#000000" : "" }}>
                             {pageNumber}
                         </button>
                     );

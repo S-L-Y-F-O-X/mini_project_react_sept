@@ -1,6 +1,7 @@
 import {Genres} from "../components";
 
 const GenresPage = () => {
+
     return (
         <div>
             <Genres/>
@@ -8,4 +9,4 @@ const GenresPage = () => {
     );
 };
 
-export {GenresPage};
+export { GenresPage };

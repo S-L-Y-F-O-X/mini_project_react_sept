@@ -1,44 +1,36 @@
 .Header {
     position: fixed;
     display: flex;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
+    justify-content: space-between;
     align-items: center;
-    background-color: #430457;
+    background-color: #1f1f1f;
     height: 70px;
     width: 100%;
     z-index: 100;
 }
+.Header h1, .Header a {
+    background: -webkit-linear-gradient(45deg, #87ff37, #1a7204);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
+
+.Header h1 {
+
+    font-size: 50px;
+    margin: 0;
+}
 .Header a{
     text-decoration: none;
-    color: #f9ff45;
     font-size: 25px ;
 }
 
-/*.container {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: flex-end;*/
-/*    background-color: #430457;*/
-/*    min-height: 100px;*/
-/*}*/
-
-/*.header {*/
-/*    flex: 1;*/
-/*display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.left, .right {*/
-
-/*    width: 100px;*/
-/*height: 100%;*/
-/*background-color: #f60707;*/
-/*}*/
-
-/*.link {*/
-/*    text-decoration: none;*/
-/*    color: #f9ff45;*/
-/*    font-size: 25px;*/
-/*}*/
+.image img{
+    margin: -10px 0 -15px -10px;
+    width: 70px;
+}
+.image p {
+    margin: 0;
+    color: #239612;
+}

@@ -10,4 +10,11 @@
  export interface IGenre {
     id: number;
     name: string;
+     genres : string;
+ }
+
+ export interface IGenreMov {
+    id: number;
+    name: string;
+     genres : string;
  }

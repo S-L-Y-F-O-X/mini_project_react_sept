@@ -10,20 +10,21 @@ interface IProps extends PropsWithChildren {
 
 const Movie: FC<IProps> = ({movie}) => {
     const {title, release_date, poster_path, vote_average} = movie;
-
+    const releaseYear = (new Date(release_date)).getFullYear();
 
     return (
         <div className={css.Movie}>
             <img src={`${imageBaseURL}${poster_path}`} alt={title}/>
-            <h1>{title}</h1>
-            <h2>{release_date}</h2>
+            <div className={css.stars}>
             <ReactStars
                 count={10}
                 value={vote_average}
                 edit={false}
                 size={24}
                 activeColor="#f5d629"
-            />
+            /></div>
+            <h2>{title}</h2>
+            <h3>{releaseYear}</h3>
         </div>
     );
 };
