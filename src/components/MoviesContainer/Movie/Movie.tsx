@@ -1,8 +1,9 @@
+import React, {FC, PropsWithChildren} from "react";
+import ReactStars from "react-rating-stars-component";
+
 import css from './Movie.module.css'
 import {imageBaseURL} from "../../../constants";
 import {IMovie} from "../../../interfaces";
-import React, {FC, PropsWithChildren} from "react";
-import ReactStars from "react-rating-stars-component";
 
 interface IProps extends PropsWithChildren {
     movie: IMovie

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
+
 import css from './Header.module.css';
 
 const Header = () => {
@@ -14,14 +15,6 @@ const Header = () => {
                 }
             });
         }
-
-        return () => {
-            if (toggleDarkMode) {
-                toggleDarkMode.removeEventListener('change', () => {
-                    // Прибрати обробник подій при видаленні компоненту
-                });
-            }
-        };
     }, []);
 
     return (
@@ -37,7 +30,6 @@ const Header = () => {
                     <span className={css.toggle__fake}></span>
                 </label>
             </div>
-
             <div className={css.image}>
                 <img src="https://i.postimg.cc/3JC9yvx9/photo-2024-02-27-12-56-29-removebg-preview.png" alt="Sly Fox" />
                 <p>Sly Fox</p>

@@ -20,5 +20,3 @@ const movieService = {
 export {
     movieService
 };
-
-// (`${movies}${moviesByGenre}${genreId}`, {})

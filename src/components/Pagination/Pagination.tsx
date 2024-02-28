@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from "react";
+import {useParams} from "react-router-dom";
 
 import css from './Pagination.module.css'
-import {useNavigate, useParams} from "react-router-dom";
 
 interface PaginationProps {
     currentPage: number;
@@ -10,13 +10,12 @@ interface PaginationProps {
 
 const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
     const [totalPages, setTotalPages] = useState(1);
-    const navigate = useNavigate();
 
     const { page } = useParams();
-
     const handlePageClick = (pageNumber: number) => {
         onPageChange(pageNumber);
     };
+
     useEffect(() => {
         setTotalPages(currentPage + 10);
         if (page) {
@@ -25,7 +24,8 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
                 onPageChange(pageNumber);
             }
         }
-    }, [navigate, onPageChange]);
+    }, [currentPage, page, onPageChange, setTotalPages]);
+
     useEffect(() => {
         setTotalPages(currentPage + 10);
         if (page) {
@@ -35,6 +35,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
             }
         }
     }, [page, currentPage, onPageChange, setTotalPages]);
+
     const handlePrevClick = () => {
         if (currentPage > 1) {
             onPageChange(currentPage - 1);
@@ -45,7 +46,6 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
         if (currentPage < totalPages) {
             onPageChange(currentPage + 1);
         }
-
     };
 
     return (

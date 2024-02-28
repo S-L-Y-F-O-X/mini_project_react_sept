@@ -1,11 +1,13 @@
 import {FC, useEffect, useState} from "react";
+import { useParams} from "react-router-dom";
+
+import css from './Movies.module.css';
 import {IMovie} from "../../../interfaces";
 import {movieService} from "../../../services";
-import css from './Movies.module.css';
-import { Movie } from "../Movie";
-import { Pagination } from "../../Pagination";
-import { useParams} from "react-router-dom";
-import {GenresOnMainList} from "../../GenresOnMainlistContainer";
+import {Genres} from "../../GenresContainer";
+import {Pagination} from "../../Pagination";
+import {Movie} from "../Movie";
+
 
 
 const Movies: FC = () => {
@@ -44,7 +46,7 @@ const Movies: FC = () => {
     return (
         <div>
             <div className={css.main}>
-                <div className={css.leftBar}><GenresOnMainList/></div>
+                <div className={css.leftBar}><Genres/></div>
                 <div className={css.Movies}>
                     {movies.map((movie: IMovie) => <Movie key={movie.id} movie={movie} />)}
                 </div>

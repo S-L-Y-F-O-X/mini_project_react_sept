@@ -20,7 +20,7 @@
 
 
 .leftBar{
-    width: 10%;
+    width: 12%;
     position: fixed;
 
 }
@@ -30,11 +30,11 @@
     flex-flow: row wrap;
     justify-content: space-between;
     margin-bottom: 10px;
-    padding-left: 10%;
+    padding-left: 12%;
     padding-right: 10%;
 }
 .rightBar {
-    width: 10%;
+    width: 5%;
     position: fixed;
     padding-left: 90%;
 
