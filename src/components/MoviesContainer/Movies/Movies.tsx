@@ -1,36 +1,44 @@
-import {FC, PropsWithChildren, useEffect, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import {IMovie} from "../../../interfaces";
 import {movieService} from "../../../services";
 import css from './Movies.module.css';
 import { Movie } from "../Movie";
 import { Pagination } from "../../Pagination";
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import {GenresOnMainList} from "../../GenresOnMainlistContainer";
 
 
-interface IProps extends PropsWithChildren {
-
-}
-const Movies: FC<IProps> = () => {
+const Movies: FC = () => {
     const [movies, setMovies] = useState<IMovie[]>([]);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState<number>(1);
     const { genreId } = useParams();
 
+    const fetchMovies = (pageNumber: number, selectedGenreId?: string) => {
+        let promise;
+        if (selectedGenreId) {
+            promise = movieService.fetchMoviesByGenre(Number(selectedGenreId), pageNumber);
+        } else {
+            promise = movieService.fetchMovies(pageNumber);
+        }
+        promise.then((data) => {
+            setMovies(data);
+            const url = new URL(window.location.href);
+            url.searchParams.set('page', pageNumber.toString());
+            window.history.replaceState(null, '', url.toString());
+        });
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            let moviesData: IMovie[];
-            if (genreId) {
-                moviesData = await movieService.fetchMoviesByGenre(Number(genreId), page);
-            } else {
-                moviesData = await movieService.fetchMovies(page);
-            }
-            setMovies(moviesData);
-        };
-        fetchData();
-    }, [genreId, page]);
+        const params = new URLSearchParams(window.location.search);
+        const pageParam = params.get('page');
+        const pageNumber = pageParam ? parseInt(pageParam) : 1;
+        setPage(pageNumber);
+        fetchMovies(pageNumber, genreId);
+    }, [genreId]);
 
     const handlePageChange = (pageNumber: number) => {
         setPage(pageNumber);
+        fetchMovies(pageNumber, genreId);
     };
 
     return (

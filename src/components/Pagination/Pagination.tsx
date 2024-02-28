@@ -10,8 +10,8 @@ interface PaginationProps {
 
 const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
     const [totalPages, setTotalPages] = useState(1);
-
     const navigate = useNavigate();
+
     const { page } = useParams();
 
     const handlePageClick = (pageNumber: number) => {
@@ -47,7 +47,6 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
         }
 
     };
-
 
     return (
         <div className={css.Pagination}>

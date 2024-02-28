@@ -28,7 +28,6 @@ const Header = () => {
         <div className={css.Header}>
             <h1>FoxCinema</h1>
             <NavLink to={'movie'}><b>Movie</b></NavLink>
-            <NavLink to={'genres'}><b>Genres</b></NavLink>
             <NavLink to={''}><b>Search</b></NavLink>
             <div className={css.rb}>
             <div className={css.buttonTheme}>
