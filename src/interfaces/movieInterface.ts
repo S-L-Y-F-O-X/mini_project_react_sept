@@ -18,3 +18,12 @@
     name: string;
      genres : string;
  }
+
+ export interface HeaderProps {
+     darkMode: boolean;
+     toggleDarkMode: () => void;
+ }
+
+ export interface MoviesProps {
+     darkMode: boolean;
+ }

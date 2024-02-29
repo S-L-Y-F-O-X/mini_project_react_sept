@@ -23,7 +23,8 @@ const Movie: FC<IProps> = ({movie}) => {
                 edit={false}
                 size={24}
                 activeColor="#f5d629"
-            /></div>
+            />
+            </div>
             <h2>{title}</h2>
             <h3>{releaseYear}</h3>
         </div>

@@ -8,9 +8,12 @@ import {Genres} from "../../GenresContainer";
 import {Pagination} from "../../Pagination";
 import {Movie} from "../Movie";
 
+import {useDarkMode} from "../../../hoc/DarkModeProvider";
+
 
 
 const Movies: FC = () => {
+    const { darkMode, toggleDarkMode } = useDarkMode();
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [page, setPage] = useState<number>(1);
     const { genreId } = useParams();
@@ -45,14 +48,14 @@ const Movies: FC = () => {
 
     return (
         <div>
-            <div className={css.main}>
+            <div className={`${css.main} ${darkMode ? css.darkMode : ''}`}>
                 <div className={css.leftBar}><Genres/></div>
                 <div className={css.Movies}>
-                    {movies.map((movie: IMovie) => <Movie key={movie.id} movie={movie} />)}
+                    {movies.map((movie: IMovie) => <Movie key={movie.id} movie={movie}/>)}
                 </div>
                 <div className={css.rightBar}></div>
             </div>
-            <Pagination currentPage={page}  onPageChange={handlePageChange}/>
+            <Pagination currentPage={page} onPageChange={handlePageChange}/>
         </div>
     );
 };

@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
+
 import { NavLink } from "react-router-dom";
 
 import css from './Header.module.css';
+import {UISwitch} from "../SwitchComponent/Switch";
+import React from "react";
+import {useDarkMode} from "../../hoc/DarkModeProvider";
 
-const Header = () => {
-    useEffect(() => {
-        const toggleDarkMode = document.getElementById('toggleDarkMode') as HTMLInputElement | null;
-        if (toggleDarkMode) {
-            toggleDarkMode.addEventListener('change', function() {
-                if (this.checked) {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                }
-            });
-        }
-    }, []);
 
+const Header: React.FC = () => {
+    const { darkMode, toggleDarkMode } = useDarkMode();
+// const Header: React.FC<HeaderProps> = () => {
+//     const { darkMode, toggleDarkMode } = useDarkMode();
     return (
         <div className={css.Header}>
             <h1>FoxCinema</h1>
@@ -24,11 +18,7 @@ const Header = () => {
             <NavLink to={''}><b>Search</b></NavLink>
             <div className={css.rb}>
             <div className={css.buttonTheme}>
-                <label className={`${css.header__selection} ${css.toggle}`}>
-                    <input id="toggleDarkMode" className={css.toggle__input} aria-label="toggle dark mode"
-                           type="checkbox"/>
-                    <span className={css.toggle__fake}></span>
-                </label>
+                <UISwitch onChange={toggleDarkMode} checked={darkMode}/>
             </div>
             <div className={css.image}>
                 <img src="https://i.postimg.cc/3JC9yvx9/photo-2024-02-27-12-56-29-removebg-preview.png" alt="Sly Fox" />
