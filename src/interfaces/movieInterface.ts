@@ -3,8 +3,8 @@
     title: string;
      poster_path: string;
      release_date: number;
-     vote_average: number
-     movie: string
+     vote_average: number;
+     movie: string;
  }
 
  export interface IGenre {
@@ -27,3 +27,14 @@
  export interface MoviesProps {
      darkMode: boolean;
  }
+
+ export type Movie = {
+     id: number;
+     title: string;
+     poster_path: string;
+     release_date: number;
+     vote_average: number;
+     movie: string;
+ }
+
+ export type MovieList = Movie[]; // Масив фільмів

@@ -3,6 +3,7 @@ const imageBaseURL = 'https://image.tmdb.org/t/p/w500';
 const movie =  '/discover/movie';
 const genres = '/genre/movie/list';
 const moviesByGenre =  `${movie}?with_genres=`;
+const movieDetails = 'movie/{movie_id}'
 const moviesBySearch = 'search/movie?query=';
 
 
@@ -12,5 +13,6 @@ export {
     movie,
     genres,
     moviesByGenre,
-    moviesBySearch
+    moviesBySearch,
+    movieDetails
 };
