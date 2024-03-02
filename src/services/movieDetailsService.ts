@@ -1,5 +1,4 @@
 import { apiService } from './apiService';
-import {movie} from "../constants";
 
 export interface MovieResponse {
     data: any;

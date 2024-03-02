@@ -1,4 +1,4 @@
-import {MovieDetail} from "../components/MovieDeteilsContainer";
+
 
 export interface IMovie {
     id: number;

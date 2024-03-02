@@ -49,7 +49,7 @@ import {MovieDetail} from "../MovieDetail";
 import css from './MovieDetails.module.css'
 import {useDarkMode} from "../../../hoc/DarkModeProvider";
 const MovieDetails: FC = () => {
-    const { darkMode, toggleDarkMode } = useDarkMode();
+    const { darkMode } = useDarkMode();
     const { movieId } = useParams();
     const [movie, setMovie] = useState<IMovieDetail | null>(null);
 
