@@ -15,7 +15,7 @@ const Movie: FC<IProps> = ({movie}) => {
     const releaseYear = (new Date(release_date)).getFullYear();
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/${id}`);
+        navigate(`/movie/${id}`);
     };
     return (
         <div onClick={handleClick} className={css.Movie}>

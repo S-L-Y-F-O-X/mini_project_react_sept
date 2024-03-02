@@ -1,34 +1,70 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+// import React, { FC, useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+// import { movieDetailsService } from "../../../services/movieDetailsService";
+// import { IMovie } from "../../../interfaces";
+//
+// const MovieDetails: FC = () => {
+//     const { movieId } = useParams();
+//     const [movie, setMovie] = useState<IMovie | null>(null);
+//
+//     useEffect(() => {
+//         const fetchMovieData = async () => {
+//             try {
+//                 if (movieId) {
+//                     const data = await movieDetailsService.fetchMovieDetails(Number(movieId));
+//                     setMovie(data);
+//                 }
+//             } catch (error) {
+//                 console.error("Error fetching movie details:", error);
+//             }
+//         };
+//         fetchMovieData();
+//     }, [movieId]);
+//
+//     if (!movie) {
+//         return <div>Loading...</div>;
+//     }
+//
+//     return (
+//         <div>
+//             <h2>{movie.title}</h2>
+//             <h2>{movie.title}</h2>
+//             <h2>{movie.title}</h2>
+//             <h2>{movie.title}</h2>
+//             <h2>{movie.title}</h2>
+//             <h2>{movie.title}</h2>
+//
+//         </div>
+//     );
+// };
+//
+// export { MovieDetails };
 
-import { MovieDetail } from "../MovieDetail";
-import {Movie, MovieList} from "../../../interfaces";
-import {movieDetailsService} from "../../../services/movieDetailsService";
 
-
-const MovieDetails = () => {
-    const [movie, setMovie] = useState<MovieList>([]);
+import React, { FC, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { movieDetailsService } from "../../../services/movieDetailsService";
+import {IMovieDetail} from "../../../interfaces";
+import {MovieDetail} from "../MovieDetail";
+import css from './MovieDetails.module.css'
+import {useDarkMode} from "../../../hoc/DarkModeProvider";
+const MovieDetails: FC = () => {
+    const { darkMode, toggleDarkMode } = useDarkMode();
     const { movieId } = useParams();
-    const navigate = useNavigate();
+    const [movie, setMovie] = useState<IMovieDetail | null>(null);
 
     useEffect(() => {
-        const id = Number(movieId);
-        movieDetailsService.fetchMovieDetails(id).then((data: Movie) => {
-            setMovie([data]);
-        });
+        movieDetailsService.fetchMovieDetails(Number(movieId)).then((data) => {setMovie(data)})
+
     }, [movieId]);
 
-    const back = () => {
-        navigate(-1);
-    };
+
 
     return (
         <div>
-            <button onClick={back}>Back</button>
-            {movie.map((singleMovie) => (
-                <MovieDetail key={singleMovie.id} movie={singleMovie} />
-            ))}
-        </div>
+        <div className={`${css.MovieDetails} ${darkMode ? css.MovieDetailsDark : ''}`}>
+            {movie && <MovieDetail movie={movie}/>}
+        </div></div>
     );
 };
 

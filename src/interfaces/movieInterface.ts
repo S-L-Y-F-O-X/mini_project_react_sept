@@ -1,4 +1,6 @@
- export interface IMovie {
+import {MovieDetail} from "../components/MovieDeteilsContainer";
+
+export interface IMovie {
     id: number;
     title: string;
      poster_path: string;
@@ -11,6 +13,7 @@
     id: number;
     name: string;
      genres : string;
+
  }
 
  export interface IGenreMov {
@@ -38,3 +41,14 @@
  }
 
  export type MovieList = Movie[]; // Масив фільмів
+
+export interface IMovieDetail {
+    title: string;
+    genres: string;
+    homepage: string;
+    overview: string;
+    poster_path: string;
+    release_date: string;
+    movie: string;
+
+}

@@ -11,18 +11,6 @@
     background-color: #575757;
 }
 
-.dark {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 70px;
-    background-color: #fdfdfd;
-}
-
-
-
 .leftBar{
     width: 12%;
     position: fixed;
