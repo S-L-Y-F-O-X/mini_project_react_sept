@@ -32,7 +32,7 @@ interface IProps extends PropsWithChildren {
 
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre;
-    const [movieCount, setMovieCount] = useState(0); // Додали стейт для збереження кількості фільмів
+    const [movieCount, setMovieCount] = useState(0);
     const navigate = useNavigate();
 
     const toSelectedGenre = () => {

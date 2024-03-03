@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useState, Dispatch, SetStateAction } from "react";
+import React, {createContext, useContext, useState, Dispatch, SetStateAction, useEffect} from "react";
 
 interface DarkModeContextProps {
     darkMode: boolean;
     setDarkMode: Dispatch<SetStateAction<boolean>>;
-    toggleDarkMode: () => void; // додаємо функцію для зміни режиму
+    toggleDarkMode: () => void;
 }
 
 export const DarkModeContext = createContext<DarkModeContextProps | undefined>(undefined);
@@ -17,25 +17,35 @@ export const useDarkMode = () => {
 };
 
 interface DarkModeProviderProps {
-    children: React.ReactNode; // додаємо тип для children
+    children: React.ReactNode;
 }
 
-export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({ children }) => { // додаємо тип DarkModeProviderProps
-    const [darkMode, setDarkMode] = useState(false);
+export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({ children }) => {
 
-    const toggleDarkMode = () => { // визначаємо функцію toggleDarkMode
-        setDarkMode((prevMode) => !prevMode);
+    const [darkMode, setDarkMode] = useState(() => {
+        const savedMode = localStorage.getItem('darkMode');
+
+        return savedMode ? JSON.parse(savedMode) : false;
+    });
+
+
+    useEffect(() => {
+        localStorage.setItem('darkMode', JSON.stringify(darkMode));
+    }, [darkMode]);
+
+    const toggleDarkMode = () => {
+        setDarkMode((prevMode: boolean) => !prevMode);
     };
 
     const value = {
         darkMode,
         setDarkMode,
-        toggleDarkMode
+        toggleDarkMode,
     };
 
     return (
         <DarkModeContext.Provider value={value}>
-            {children}
-        </DarkModeContext.Provider>
-    );
+        {children}
+    </DarkModeContext.Provider>
+);
 };

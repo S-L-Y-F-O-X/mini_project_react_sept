@@ -1,7 +1,6 @@
 .Header {
     position: fixed;
     display: flex;
-
     justify-content: space-between;
     align-items: center;
     background-color: #1f1f1f;
@@ -25,7 +24,9 @@
     text-decoration: none;
     font-size: 25px ;
 }
-
+.image {
+    margin-left: 30px;
+}
 .image img{
     margin: -10px 0 -15px -10px;
     width: 70px;
@@ -40,6 +41,14 @@
     align-items: center;
 }
 
+.buttonSearch{
+    display: inline-flex;
+}
+.buttonSearch button {
+    color: #4ab902;
+    background: #4b4b4b;
+    border-radius: 30px;
+}
 
 /*.buttonTheme {*/
 /*    margin-right: 20px;*/

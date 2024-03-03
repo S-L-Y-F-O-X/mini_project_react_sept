@@ -12,7 +12,7 @@ const movieService = {
         return response.data.results;
     },
     searchMovies: async (query: string) => {
-        const response = await apiService.get(`${movie}${moviesBySearch}${query}`, {});
+        const response = await apiService.get(`${moviesBySearch}${query}`, {});
         return response.data.results;
     }
 };
