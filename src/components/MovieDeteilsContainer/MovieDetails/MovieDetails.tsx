@@ -61,10 +61,9 @@ const MovieDetails: FC = () => {
 
 
     return (
-        <div>
         <div className={`${css.MovieDetails} ${darkMode ? css.MovieDetailsDark : ''}`}>
             {movie && <MovieDetail movie={movie}/>}
-        </div></div>
+        </div>
     );
 };
 

@@ -5,8 +5,12 @@ export interface MovieResponse {
 }
 const movieDetailsService = {
     fetchMovieDetails: async (movieId: number) => {
-        const response = await apiService.get(`movie/${movieId}`, {});
-        return response.data;
+        const movieDetailsResponse = await apiService.get(`movie/${movieId}`, {});
+        const movieCreditsResponse = await apiService.get(`movie/${movieId}/credits`, {});
+        const movieDetails = movieDetailsResponse.data;
+        const credits = movieCreditsResponse.data.cast;
+
+        return { ...movieDetails, actors: credits };
     },
 };
 

@@ -50,5 +50,14 @@ export interface IMovieDetail {
     poster_path: string;
     release_date: string;
     movie: string;
+    id: number
+
+}
+
+export interface IActor {
+    id: number;
+    name: string;
+    character: string;
+    profile_path: string;
 
 }

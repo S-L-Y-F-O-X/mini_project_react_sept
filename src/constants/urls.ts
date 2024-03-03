@@ -5,7 +5,7 @@ const genres = '/genre/movie/list';
 const moviesByGenre =  `${movie}?with_genres=`;
 const movieDetails = 'movie/{movie_id}'
 const moviesBySearch = 'search/movie?query=';
-
+const credits = '/movie/{movie_id}/credits';
 
 export {
     baseURL,
@@ -14,5 +14,6 @@ export {
     genres,
     moviesByGenre,
     moviesBySearch,
-    movieDetails
+    movieDetails,
+    credits
 };
