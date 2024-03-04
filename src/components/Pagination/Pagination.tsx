@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import {FC, useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 
 import css from './Pagination.module.css'
@@ -8,10 +8,9 @@ interface PaginationProps {
     onPageChange: (pageNumber: number) => void;
 }
 
-const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
+const Pagination: FC<PaginationProps> = ({currentPage, onPageChange}) => {
     const [totalPages, setTotalPages] = useState(1);
-
-    const { page } = useParams();
+    const {page} = useParams();
     const handlePageClick = (pageNumber: number) => {
         onPageChange(pageNumber);
     };
@@ -19,7 +18,7 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
     useEffect(() => {
         setTotalPages(currentPage + 10);
         if (page) {
-            const pageNumber = parseInt(page, 10)|| 1;
+            const pageNumber = parseInt(page, 10) || 1;
             if (pageNumber !== currentPage) {
                 onPageChange(pageNumber);
             }
@@ -51,11 +50,12 @@ const Pagination: FC<PaginationProps> = ({ currentPage, onPageChange }) => {
     return (
         <div className={css.Pagination}>
             <button onClick={handlePrevClick} disabled={currentPage === 1}>&#10094;</button>
-            {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => {
+            {Array.from({length: totalPages}, (_, index) => index + 1).map((pageNumber) => {
                 const isActive = pageNumber === currentPage;
                 if (pageNumber === 1 || pageNumber === totalPages || pageNumber === currentPage || Math.abs(pageNumber - currentPage) <= 2) {
                     return (
-                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)} style={{ backgroundColor: isActive ? "#1e8300" : "", color: isActive ? "#000000" : "" }}>
+                        <button key={pageNumber} onClick={() => handlePageClick(pageNumber)}
+                                style={{backgroundColor: isActive ? "#1e8300" : "", color: isActive ? "#000000" : ""}}>
                             {pageNumber}
                         </button>
                     );

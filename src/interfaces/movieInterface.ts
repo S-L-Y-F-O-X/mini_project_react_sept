@@ -1,46 +1,23 @@
-
-
 export interface IMovie {
     id: number;
     title: string;
-     poster_path: string;
-     release_date: number;
-     vote_average: number;
-     movie: string;
- }
+    poster_path: string;
+    release_date: number;
+    vote_average: number;
+    movie: string;
+}
 
- export interface IGenre {
+export interface IGenre {
     id: number;
     name: string;
-     genres : string;
+    genres: string;
+}
 
- }
-
- export interface IGenreMov {
+export interface IGenreMov {
     id: number;
     name: string;
-     genres : string;
- }
-
- export interface HeaderProps {
-     darkMode: boolean;
-     toggleDarkMode: () => void;
- }
-
- export interface MoviesProps {
-     darkMode: boolean;
- }
-
- export type Movie = {
-     id: number;
-     title: string;
-     poster_path: string;
-     release_date: number;
-     vote_average: number;
-     movie: string;
- }
-
- export type MovieList = Movie[]; // Масив фільмів
+    genres: string;
+}
 
 export interface IMovieDetail {
     title: string;
@@ -51,7 +28,6 @@ export interface IMovieDetail {
     release_date: string;
     movie: string;
     id: number
-
 }
 
 export interface IActor {
@@ -59,5 +35,4 @@ export interface IActor {
     name: string;
     character: string;
     profile_path: string;
-
 }

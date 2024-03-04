@@ -1,22 +1,5 @@
-// import {apiService} from "./apiService";
-// import {genres} from "../constants";
-//
-// const genreService = {
-//     getGenres: async () => {
-//         const response = await apiService.get(genres, {});
-//         return response.data.genres;
-//     }
-// };
-//
-//
-//
-//
-// export {
-//     genreService
-// };
-
-import { apiService } from "./apiService";
-import { genres } from "../constants";
+import {apiService} from "./apiService";
+import {genres} from "../constants";
 
 const genreService = {
     getGenres: async () => {
@@ -29,4 +12,4 @@ const genreService = {
     }
 };
 
-export { genreService };
+export {genreService};

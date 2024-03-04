@@ -6,11 +6,11 @@ import {router} from "./router";
 import {DarkModeProvider} from "./hoc/DarkModeProvider";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
     <DarkModeProvider>
-  <RouterProvider router={router}/>
+        <RouterProvider router={router}/>
     </DarkModeProvider>
 );
 

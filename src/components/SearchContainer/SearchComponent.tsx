@@ -5,7 +5,7 @@ interface IProps extends PropsWithChildren {
     onSearch: (query: string) => void;
 }
 
-const SearchComponent: FC<IProps> = ({ onSearch }) => {
+const SearchComponent: FC<IProps> = ({onSearch}) => {
     const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
     const handleSearch = () => {
@@ -25,4 +25,4 @@ const SearchComponent: FC<IProps> = ({ onSearch }) => {
     );
 };
 
-export { SearchComponent };
+export {SearchComponent};

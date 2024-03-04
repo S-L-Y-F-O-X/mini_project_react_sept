@@ -7,15 +7,16 @@
     padding-top: 70px;
     background-color: #e3e3e3;
 }
+
 .darkMode {
     background-color: #575757;
 }
 
-.leftBar{
+.leftBar {
     width: 12%;
     position: fixed;
-
 }
+
 .Movies {
     width: 80%;
     display: flex;
@@ -25,9 +26,9 @@
     padding-left: 12%;
     padding-right: 10%;
 }
+
 .rightBar {
     width: 5%;
     position: fixed;
     padding-left: 90%;
-
 }

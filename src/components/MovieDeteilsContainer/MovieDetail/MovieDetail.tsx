@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {IActor, IGenre, IMovieDetail} from "../../../interfaces";
+
 import css from './MovieDetail.module.css'
+import {IActor, IGenre, IMovieDetail} from "../../../interfaces";
 import {imageBaseURL} from "../../../constants";
 import {movieDetailsService} from "../../../services/movieDetailsService";
 
@@ -9,8 +10,8 @@ interface IProps {
     movie: IMovieDetail;
 }
 
-const MovieDetail: React.FC<IProps> = ({ movie }) => {
-    const { title, homepage, overview, poster_path, release_date, genres, id } = movie;
+const MovieDetail: React.FC<IProps> = ({movie}) => {
+    const {title, homepage, overview, poster_path, release_date, genres, id} = movie;
     const [actors, setActors] = useState<IActor[]>([]);
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const MovieDetail: React.FC<IProps> = ({ movie }) => {
 
     return (
         <div className={css.MovieDetail}>
-            <img src={`${imageBaseURL}${poster_path}`} alt={title} />
+            <img src={`${imageBaseURL}${poster_path}`} alt={title}/>
             <div className={css.title_genre}>
                 <h1>{title}</h1>
                 <div className={css.genre}>
@@ -54,15 +55,3 @@ const MovieDetail: React.FC<IProps> = ({ movie }) => {
 };
 
 export {MovieDetail};
-
-
-// const MovieDetail = ({ movie }: { movie: Movie }) => {
-//     const { id, title, poster_path, release_date, vote_average, movie: movieName } = movie;
-//     return (
-//         <div className={css.MovieDetail}>
-//
-//             <div>Title: {title}</div>
-//             <div>Poster Path: {poster_path}</div>
-//             <div>Release Date: {release_date}</div>
-//             <div>Vote Average: {vote_average}</div>
-//         </div>

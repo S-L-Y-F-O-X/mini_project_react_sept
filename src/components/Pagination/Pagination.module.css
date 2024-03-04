@@ -1,6 +1,6 @@
 .Pagination {
     text-align: center;
-    background-color: #7a7a7a;
+    background-color: #575757;
 }
 
 .Pagination button {
@@ -12,5 +12,4 @@
     background-color: #333333;
     color: #87ff37;
     cursor: pointer;
-
 }

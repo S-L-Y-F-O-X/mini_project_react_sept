@@ -7,7 +7,6 @@ interface DarkModeContextProps {
 }
 
 export const DarkModeContext = createContext<DarkModeContextProps | undefined>(undefined);
-
 export const useDarkMode = () => {
     const context = useContext(DarkModeContext);
     if (!context) {
@@ -20,11 +19,10 @@ interface DarkModeProviderProps {
     children: React.ReactNode;
 }
 
-export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({ children }) => {
+export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({children}) => {
 
     const [darkMode, setDarkMode] = useState(() => {
         const savedMode = localStorage.getItem('darkMode');
-
         return savedMode ? JSON.parse(savedMode) : false;
     });
 
@@ -45,7 +43,7 @@ export const DarkModeProvider: React.FC<DarkModeProviderProps> = ({ children }) 
 
     return (
         <DarkModeContext.Provider value={value}>
-        {children}
-    </DarkModeContext.Provider>
-);
+            {children}
+        </DarkModeContext.Provider>
+    );
 };

@@ -6,15 +6,15 @@ import {MovieDetailsPage, MoviesPage} from "./pages";
 
 const router = createBrowserRouter([
     {
-        path: '', element:<MainLayout/>, children:[
+        path: '', element: <MainLayout/>, children: [
             {
-                index: true, element:<Navigate to={'movie'}/>
+                index: true, element: <Navigate to={'movie'}/>
             },
             {
-               path:'movie', element:<MoviesPage/>
+                path: 'movie', element: <MoviesPage/>
             },
             {
-                path:'/genres/:genreId', element:<MoviesPage/>
+                path: '/genres/:genreId', element: <MoviesPage/>
             },
             {
                 path: 'movie/:movieId', element: <MovieDetailsPage/>

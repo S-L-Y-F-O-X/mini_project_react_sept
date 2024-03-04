@@ -1,32 +1,27 @@
-import React, { FC, useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { IMovie } from "../../../interfaces";
-import { movieService } from "../../../services";
-import { Genres } from "../../GenresContainer";
-import { Pagination } from "../../Pagination";
-import { Movie } from "../Movie";
+import React, {FC, useEffect, useState, useCallback} from "react";
+import {useLocation, useParams} from "react-router-dom";
 
-import { useDarkMode } from "../../../hoc/DarkModeProvider";
 import css from './Movies.module.css';
+import {IMovie} from "../../../interfaces";
+import {movieService} from "../../../services";
+import {Genres, Pagination, Movie} from "../../../components";
+import {useDarkMode} from "../../../hoc/DarkModeProvider";
 
 const Movies: FC = () => {
-    const { darkMode, toggleDarkMode } = useDarkMode();
+    const {darkMode,} = useDarkMode();
     const [movies, setMovies] = useState<IMovie[]>([]);
     const [page, setPage] = useState<number>(1);
-    const { genreId } = useParams();
-
+    const {genreId} = useParams();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const query = queryParams.get('query');
 
-
-
-    const fetchMovies = (pageNumber: number, selectedGenreId?: string, searchQuery?: string) => {
+    const fetchMovies = useCallback((pageNumber: number, selectedGenreId?: string, searchQuery?: string) => {
         let promise;
         if (selectedGenreId) {
             promise = movieService.fetchMoviesByGenre(Number(selectedGenreId), pageNumber);
         } else if (searchQuery) {
-            promise = movieService.searchMovies(searchQuery);
+            promise = movieService.searchMovies(searchQuery, pageNumber);
         } else {
             promise = movieService.fetchMovies(pageNumber);
         }
@@ -34,9 +29,15 @@ const Movies: FC = () => {
             setMovies(data);
             const url = new URL(window.location.href);
             url.searchParams.set('page', pageNumber.toString());
-            window.history.replaceState(null, '', url.toString());
+            if (selectedGenreId) {
+                url.searchParams.set('genreId', selectedGenreId);
+            }
+            if (searchQuery) {
+                url.searchParams.set('query', searchQuery);
+            }
+            window.history.replaceState(null, '', `${url.pathname}?${url.searchParams.toString()}`);
         });
-    };
+    }, []);
 
     useEffect(() => {
         const params = new URLSearchParams(window.location.search);
@@ -44,9 +45,12 @@ const Movies: FC = () => {
         const pageNumber = pageParam ? parseInt(pageParam) : 1;
         setPage(pageNumber);
         fetchMovies(pageNumber, genreId, query);
-    }, [genreId, query]);
+    }, [genreId, query, fetchMovies]);
 
     const handlePageChange = (pageNumber: number) => {
+        if (pageNumber === 0) {
+            return;
+        }
         setPage(pageNumber);
         fetchMovies(pageNumber, genreId, query);
     };
@@ -57,9 +61,7 @@ const Movies: FC = () => {
                 <div className={css.leftBar}><Genres/></div>
                 <div className={css.Movies}>
                     {movies.map((movie: IMovie) => <Movie key={movie.id} movie={movie}/>)}
-
                     {movies.length === 0 && query && <p>No movies found for '{query}'</p>}
-
                 </div>
                 <div className={css.rightBar}></div>
             </div>
@@ -68,4 +70,4 @@ const Movies: FC = () => {
     );
 };
 
-export { Movies };
+export {Movies};

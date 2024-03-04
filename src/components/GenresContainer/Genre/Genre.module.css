@@ -1,14 +1,12 @@
-.Genre{
+.Genre {
     padding-left: 10px;
     display: flex;
 }
 
-
-.Genre p{
+.Genre p {
     margin: 3px;
     font-size: 18px;
     display: flex;
-
 }
 
 .Genre p:hover {

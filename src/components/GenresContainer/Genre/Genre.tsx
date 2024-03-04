@@ -1,34 +1,14 @@
 import {FC, PropsWithChildren, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {Badge} from "reactstrap";
 
 import css from './Genre.module.css'
 import {IGenre} from "../../../interfaces";
 import {genreService} from "../../../services";
-import {Badge} from "reactstrap";
 
 interface IProps extends PropsWithChildren {
     genre: IGenre
 }
-
-// const Genre: FC<IProps> = ({genre}) => {
-//     const {id, name} = genre;
-//     const navigate = useNavigate();
-//
-//     const toSelectedGenre = () => {
-//         navigate(`/genres/${id}`);
-//     }
-//
-//         return (
-//             <div onClick={toSelectedGenre} className={css.Genre}>
-//                 <p><span>&#127909;</span>{name}</p>
-//
-//             </div>
-//         );
-// };
-
-
-
-
 
 const Genre: FC<IProps> = ({genre}) => {
     const {id, name} = genre;
@@ -40,7 +20,7 @@ const Genre: FC<IProps> = ({genre}) => {
     }
 
     useEffect(() => {
-        genreService.getMoviesCountByGenre(id,1)
+        genreService.getMoviesCountByGenre(id, 1)
             .then((count) => {
                 setMovieCount(count);
             })
@@ -48,7 +28,7 @@ const Genre: FC<IProps> = ({genre}) => {
     }, [id]);
 
     return (
-        <div  className={css.Genre}>
+        <div className={css.Genre}>
             <p onClick={toSelectedGenre}><b>{name}</b></p>
             <Badge className={css.badge}>{movieCount}</Badge>
 
